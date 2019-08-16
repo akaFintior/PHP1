@@ -63,6 +63,7 @@ function translate_string($str) {
     return $newStr;
 }
 
+
 //task 5
 function modify_string($str) {
     $newStr = str_replace(' ', '_', $str);
@@ -77,10 +78,41 @@ for ($i = 0; $i < 10; print $i++ . "\n") {}
 foreach ($arr as $key => $item) {
     echo "$key:\n";
     if (is_array($item)) {
+        $cities = [];
         foreach ($item as $city) {
             if (mb_substr($city,0,1) == 'К') {
-                echo "$city \n";
+                $cities[] = $city;
             }
         }
+        foreach ($cities as $city) {
+            if ($cities[count($cities) - 1] == $city) {
+                echo "$city \n";
+            } else echo "$city, ";
+        }
     }
+}
+
+//task 9
+function translate_string_2($str) {
+    $alfabet = [
+        'а' => 'a',   'б' => 'b',   'в' => 'v',
+        'г' => 'g',   'д' => 'd',   'е' => 'e',
+        'ё' => 'e',   'ж' => 'zh',  'з' => 'z',
+        'и' => 'i',   'й' => 'y',   'к' => 'k',
+        'л' => 'l',   'м' => 'm',   'н' => 'n',
+        'о' => 'o',   'п' => 'p',   'р' => 'r',
+        'с' => 's',   'т' => 't',   'у' => 'u',
+        'ф' => 'f',   'х' => 'h',   'ц' => 'c',
+        'ч' => 'ch',  'ш' => 'sh',  'щ' => 'sch',
+        'ь' => '\'',  'ы' => 'y',   'ъ' => '\'',
+        'э' => 'e',   'ю' => 'yu',  'я' => 'ya',
+        ' ' => '_'
+        ];
+    $newStr = '';
+    for ($i = 0; $i < strlen($str); $i++) {
+        if (mb_strtolower(mb_substr($str, $i, 1)) == mb_substr($str, $i, 1)) {
+            $newStr .= $alfabet[mb_substr($str, $i, 1)];
+        } else $newStr .= strtoupper($alfabet[mb_strtolower(mb_substr($str, $i, 1))]);
+    }
+    return $newStr;
 }
