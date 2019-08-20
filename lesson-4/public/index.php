@@ -39,8 +39,11 @@ switch ($page) {
         die();
         break;
 }
-
+$main_menu = ['/' => "Главная",
+        '/?page=catalog' => "Каталог",
+        '/?page=apicatalog' => "Api-test-catalog"];
 
 
 echo render($page, $params);
 
+var_dump($_SERVER['DOCUMENT_ROOT']);

@@ -2,7 +2,7 @@
 
 function render($page, $params = [])
 {
-    return renderTempate("layout", ['content' => renderTempate($page, $params)]);
+    return renderTempate("layout", ['menu' => renderTempate('menu', $main_menu), 'content' => renderTempate($page, $params)]);
 }
 
 
@@ -17,7 +17,7 @@ function renderTempate($page, $params = [])
     if (file_exists($filename)) {
         include $filename;
     } else {
-        echo "Страницы не существует 404";
+        echo "Page not found 404";
     }
 
 
