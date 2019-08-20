@@ -2,7 +2,7 @@
 
 function render($page, $params = [])
 {
-    return renderTempate("layout", ['menu' => renderTempate('menu', $main_menu), 'content' => renderTempate($page, $params)]);
+    return renderTempate("layout", ['menu' => renderTempate('menu', $params), 'content' => renderTempate($page, $params)]);
 }
 
 
