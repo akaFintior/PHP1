@@ -1,0 +1,1 @@
+<img src="<?= IMAGES_DIR_BIG . $image ?>" alt="">

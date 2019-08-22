@@ -1,8 +1,8 @@
 <?php
 
-function render($page, $params = [])
+function render($page, $params = [], $navig = [])
 {
-    return renderTempate("layout", ['menu' => renderTempate('menu', $params), 'content' => renderTempate($page, $params)]);
+    return renderTempate("layout", ['navig' => renderTempate('menu', $navig), 'content' => renderTempate($page, $params)]);
 }
 
 
