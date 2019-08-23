@@ -23,12 +23,12 @@ switch ($page) {
         break;
     case 'gallery':
         $params = [
-            'images' => getGalleryImages(__DIR__ . IMAGES_DIR_SMALL)
+            'images' => getImages()
         ];
         break;
     case 'image':
         $params = [
-            'image' =>  $_GET['id']
+            'image' =>  getImage($_GET['id'])
         ];
         break;
     case 'apicatalog':
