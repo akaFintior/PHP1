@@ -15,11 +15,12 @@ function getAllGoods() {
     return $result;
 }
 
-function addToBasket($session_id, $action, $id) {
+function addToBasket(&$params, $session_id, $action, $id) {
     if ($action == "buy") {
         $id = (int)$id;
         $sql = "INSERT INTO basket (id_session, id_good) VALUES ('{$session_id}', '{$id}')";
         $result = executeQuery($sql);
+        $params['message'] = "added to basket";
         return $result;
     }
 }
@@ -29,12 +30,3 @@ function getItemsFromBasket($session_id) {
     return $result;
 }
 
-function deleteItem($action, $id) {
-    if ($action == "delete") {
-        $id =(int)$id;
-        $sql = "DELETE FROM `basket` WHERE id={$id}";
-        $result = executeQuery($sql);
-        if (mysqli_affected_rows(getDb()) != 1) return false;
-        return $result;
-    }
-}

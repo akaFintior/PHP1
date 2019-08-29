@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 28, 2019 at 03:13 PM
+-- Generation Time: Aug 29, 2019 at 10:41 AM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.7
 
@@ -31,8 +31,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `basket` (
   `id` int(11) NOT NULL,
   `id_good` int(11) NOT NULL,
-  `id_session` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id_session` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `basket`
@@ -54,7 +54,12 @@ INSERT INTO `basket` (`id`, `id_good`, `id_session`) VALUES
 (24, 2, '6f1a062d49cd7d64609f8186c426d705'),
 (25, 2, '6f1a062d49cd7d64609f8186c426d705'),
 (26, 3, '6f1a062d49cd7d64609f8186c426d705'),
-(27, 3, '6f1a062d49cd7d64609f8186c426d705');
+(27, 3, '6f1a062d49cd7d64609f8186c426d705'),
+(28, 1, 'be027303a2167b5a1b87dd579ef65ee6'),
+(29, 2, 'be027303a2167b5a1b87dd579ef65ee6'),
+(31, 2, 'be027303a2167b5a1b87dd579ef65ee6'),
+(32, 1, 'be027303a2167b5a1b87dd579ef65ee6'),
+(33, 3, 'be027303a2167b5a1b87dd579ef65ee6');
 
 -- --------------------------------------------------------
 
@@ -64,8 +69,8 @@ INSERT INTO `basket` (`id`, `id_good`, `id_session`) VALUES
 
 CREATE TABLE `category` (
   `id` int(11) NOT NULL,
-  `category` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `category` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `category`
@@ -83,9 +88,9 @@ INSERT INTO `category` (`id`, `category`) VALUES
 
 CREATE TABLE `feedback` (
   `id` int(11) NOT NULL,
-  `name` text NOT NULL,
-  `feedback` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `name` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `feedback` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `feedback`
@@ -102,11 +107,11 @@ INSERT INTO `feedback` (`id`, `name`, `feedback`) VALUES
 
 CREATE TABLE `goods` (
   `id` int(11) NOT NULL,
-  `image` text NOT NULL,
-  `name` text NOT NULL,
-  `description` text NOT NULL,
+  `image` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `goods`
@@ -126,9 +131,9 @@ INSERT INTO `goods` (`id`, `image`, `name`, `description`, `price`) VALUES
 CREATE TABLE `news` (
   `id` int(11) NOT NULL,
   `category` int(11) NOT NULL,
-  `prev` text NOT NULL,
-  `text` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `prev` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `text` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `news`
@@ -146,10 +151,10 @@ INSERT INTO `news` (`id`, `category`, `prev`, `text`) VALUES
 
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
-  `session_id` text NOT NULL,
-  `name` text NOT NULL,
-  `phone` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `session_id` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `orders`
@@ -158,7 +163,8 @@ CREATE TABLE `orders` (
 INSERT INTO `orders` (`id`, `session_id`, `name`, `phone`) VALUES
 (4, '9369de95b0d721a8b4895c3949f59fd4', 'New', '+7(000)000-0000'),
 (5, '9369de95b0d721a8b4895c3949f59fd4', 'Michele', '234235233'),
-(6, '6f1a062d49cd7d64609f8186c426d705', 'James', '+89557524565');
+(6, '6f1a062d49cd7d64609f8186c426d705', 'James', '+89557524565'),
+(7, 'be027303a2167b5a1b87dd579ef65ee6', 'Oliver', '+78978978978');
 
 -- --------------------------------------------------------
 
@@ -168,10 +174,10 @@ INSERT INTO `orders` (`id`, `session_id`, `name`, `phone`) VALUES
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `login` text NOT NULL,
-  `pass` text NOT NULL,
-  `hash` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `login` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pass` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `hash` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
@@ -234,7 +240,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `basket`
 --
 ALTER TABLE `basket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -264,7 +270,7 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`

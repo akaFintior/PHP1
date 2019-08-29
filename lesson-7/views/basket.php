@@ -1,5 +1,6 @@
 <h2>Корзина</h2>
 <br><br>
+<?=$message?>
 <?foreach ($goods as $good): ?>
 <div>
     <b><?=$good['name']?></b> price:<?=$good['price']?> <a href="/basket/delete/<?=$good['basket_id']?>">X</a><br>

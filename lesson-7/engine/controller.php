@@ -65,15 +65,14 @@ function prepareVariables($page, $action, $id)
             break;
 
         case 'item':
-            
-            addToBasket($session_id, $action, $id);
+            $params['message'] = '';
+            addToBasket($params, $session_id, $action, $id);
 
             $params['good'] = getOneGood($id);
             break;
         case 'basket':
-
-            deleteItem($action, $id);
-            placeOrder($action, $session_id);
+            $params['message'] = '';
+            doBasketAction($params, $action, $id, $session_id);
             $params['goods'] = getItemsFromBasket($session_id);
             break;
         case 'admin':
