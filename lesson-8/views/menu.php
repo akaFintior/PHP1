@@ -18,3 +18,7 @@
 <a href="/catalog/">Каталог</a>
 <a href="/feedback/">Отзывы</a>
 <a href="/basket/">Корзина <span id="counter"><?=$count?></span></a>
+<?if (is_auth()):?>
+<a href="/admin/">Админка</a>
+<?endif;?>
+

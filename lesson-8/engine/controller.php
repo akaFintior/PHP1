@@ -74,12 +74,21 @@ function prepareVariables($page, $action, $id)
             break;
 
         case "basket":
-
             $params['basket'] = getBasket();
-            $params['summ'] = summFromBasket();
-
+            $params['summ'] = summFromBasket(session_id());
+            placeOrder($action, session_id());
             break;
 
+        case 'admin':
+            
+            $params['orders'] = showOrders();
+            break;
+
+        case 'order':
+            $params['id'] = $action;
+            $params['goods'] = getOrder($action);
+            $params['summ'] = summFromBasket($action);
+            break;
 
         case 'api':
             if ($action == "buy") {
@@ -100,7 +109,7 @@ function prepareVariables($page, $action, $id)
                 deleteFromBasket($id);
 
                 $params['count'] = getBasketCount();
-                $params['summ'] = summFromBasket();
+                $params['summ'] = summFromBasket(session_id());
                 $params['id'] = $id;
 
                 header("Content-type: application/json");

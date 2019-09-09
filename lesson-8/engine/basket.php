@@ -14,8 +14,7 @@ function getBasket() {
     return $basket;
 }
 
-function summFromBasket() {
-    $session_id = session_id();
+function summFromBasket($session_id) {
     $sql = "SELECT SUM(goods.price) as summ FROM `basket`, `goods` WHERE basket.goods_id=goods.id AND `session_id` ='$session_id'";
     return getAssocResult($sql)[0]['summ'];
 }

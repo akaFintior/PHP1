@@ -7,8 +7,8 @@ define("ENGINE_DIR", "../engine/");
 
 /* DB config */
 define('HOST', 'localhost');
-define('USER', 'root');
-define('PASS', '');
+define('USER', 'shop');
+define('PASS', '123456');
 define('DB', 'shop');
 
 const ERR_CODE = [
